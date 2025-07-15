@@ -17,6 +17,10 @@ export default {
 				'2xl': '1400px'
 			}
 		},
+		fontFamily: {
+			sans: ['Inter', 'Noto Sans KR', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+			korean: ['Noto Sans KR', 'sans-serif'],
+		},
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
