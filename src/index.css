@@ -195,25 +195,25 @@
     cursor: pointer;
   }
 
-  /* 텍스트 가독성 개선 */
+  /* 텍스트 가독성 개선 - 순환 종속성 해결 */
   .text-lg {
-    @apply text-lg leading-relaxed;
     font-size: 1.15rem;
+    line-height: 1.75;
   }
 
   .text-xl {
-    @apply text-xl leading-relaxed;
     font-size: 1.3rem;
+    line-height: 1.75;
   }
 
   .text-2xl {
-    @apply text-2xl leading-tight;
     font-size: 1.6rem;
+    line-height: 1.25;
   }
 
   .text-3xl {
-    @apply text-3xl leading-tight;
     font-size: 2rem;
+    line-height: 1.25;
   }
 
   /* 개선된 알림 메시지 */
