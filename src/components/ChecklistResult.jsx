@@ -1,35 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import CardWrapper from "./CardWrapper";
-import { Send, Shield, CheckCircle, AlertTriangle, Info, Download } from "lucide-react";
+import { Shield, CheckCircle, AlertTriangle, Info, Download } from "lucide-react";
 
 const ChecklistResult = ({ name = "익명 보호자", score, answers }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const submitToSheet = async () => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyESU-0GFYu_CghZY01j_tYXz5IE9ND72-4jA5ABCmWez7M9KaC-GvIHyipMd1i85vP/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          name, 
-          score, 
-          answers,
-          timestamp: new Date().toISOString() 
-        })
-      });
-      
-      setSubmitted(true);
-      const result = await response.json();
-      console.log("결과 제출 완료:", { name, score, answers });
-    } catch (error) {
-      console.error("제출 중 오류:", error);
-      alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const getResultAnalysis = () => {
     if (score >= 5) {
@@ -140,7 +113,7 @@ ${analysis.recommendation}
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <div className="flex justify-center mb-8">
           <button 
             onClick={generatePDFContent}
             className="btn-secondary flex items-center justify-center space-x-2"
@@ -148,22 +121,6 @@ ${analysis.recommendation}
             <Download className="w-5 h-5" />
             <span>결과 저장하기</span>
           </button>
-
-          {!submitted ? (
-            <button 
-              onClick={submitToSheet}
-              disabled={isSubmitting}
-              className="btn-primary flex items-center justify-center space-x-2"
-            >
-              <Send className="w-5 h-5" />
-              <span>{isSubmitting ? "제출 중..." : "익명으로 결과 제출"}</span>
-            </button>
-          ) : (
-            <div className="flex items-center space-x-2 text-success">
-              <CheckCircle className="w-5 h-5" />
-              <span>제출이 완료되었습니다</span>
-            </div>
-          )}
         </div>
 
         <div className="bg-muted/50 p-4 rounded-lg">

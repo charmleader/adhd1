@@ -11,8 +11,25 @@ const AdhdChecklist = ({ onComplete }) => {
     setAnswers((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const selectedItems = checklistItems.filter(item => answers[item.id]);
+    
+    // 구글 시트에 결과 전송
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbyESU-0GFYu_CghZY01j_tYXz5IE9ND72-4jA5ABCmWez7M9KaC-GvIHyipMd1i85vP/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          name: "익명 보호자", 
+          score: checkedCount, 
+          answers: selectedItems.map(item => item.text),
+          timestamp: new Date().toISOString() 
+        })
+      });
+    } catch (error) {
+      console.error("제출 중 오류:", error);
+    }
+    
     onComplete && onComplete(checkedCount, selectedItems.map(item => item.text));
   };
 
