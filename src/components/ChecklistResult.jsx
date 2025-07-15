@@ -10,7 +10,7 @@ const ChecklistResult = ({ name = "익명 보호자", score, answers }) => {
     setIsSubmitting(true);
     try {
       // Google Apps Script URL을 실제 URL로 교체해야 합니다
-      // const response = await fetch("https://script.google.com/macros/s/your-script-id/exec", {
+      // const response = await fetch("https://script.google.com/macros/s/AKfycbzQfRwsO7T-Uh4sldWzY6Lk8-mrWqI3SAhAXYa40kM/exec", {
       //   method: "POST",
       //   headers: { "Content-Type": "application/json" },
       //   body: JSON.stringify({ 
