@@ -1,0 +1,122 @@
+import React, { useState } from "react";
+import { checklistItems } from "../data/checklistItems";
+import CardWrapper from "./CardWrapper";
+import { CheckCircle2, Circle, AlertTriangle, Info } from "lucide-react";
+
+const AdhdChecklist = ({ onComplete }) => {
+  const [answers, setAnswers] = useState({});
+  const checkedCount = Object.values(answers).filter(Boolean).length;
+
+  const handleCheck = (id, value) => {
+    setAnswers((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = () => {
+    const selectedItems = checklistItems.filter(item => answers[item.id]);
+    onComplete && onComplete(checkedCount, selectedItems.map(item => item.text));
+  };
+
+  const getFeedbackMessage = () => {
+    if (checkedCount >= 5) {
+      return {
+        type: "warning",
+        icon: <AlertTriangle className="w-5 h-5" />,
+        message: "조용한 ADHD 특성이 강하게 의심됩니다. 전문가 상담을 권장합니다."
+      };
+    } else if (checkedCount >= 3) {
+      return {
+        type: "info", 
+        icon: <Info className="w-5 h-5" />,
+        message: "일부 ADHD 특성이 보입니다. 지속적인 관찰이 필요합니다."
+      };
+    } else {
+      return {
+        type: "success",
+        icon: <CheckCircle2 className="w-5 h-5" />,
+        message: "현재로서는 큰 문제가 없어 보입니다. 하지만 계속 관심을 가져주세요."
+      };
+    }
+  };
+
+  const feedback = getFeedbackMessage();
+
+  return (
+    <div className="max-w-4xl mx-auto p-4">
+      <CardWrapper>
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+            🧠 조용한 ADHD 자가진단 체크리스트
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            자녀에게 해당하는 항목에 체크해주세요
+          </p>
+        </div>
+
+        <div className="space-y-4 mb-8">
+          {checklistItems.map((item) => (
+            <div key={item.id} className="checkbox-item">
+              <button
+                onClick={() => handleCheck(item.id, !answers[item.id])}
+                className="flex-shrink-0 w-6 h-6 mt-1"
+              >
+                {answers[item.id] ? (
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                ) : (
+                  <Circle className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                )}
+              </button>
+              <div className="flex-1">
+                <p className="font-medium text-foreground mb-1">
+                  {item.text}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {checkedCount > 0 && (
+          <div className={`mb-6 p-4 rounded-lg border ${
+            feedback.type === 'warning' ? 'alert-warning' : 
+            feedback.type === 'success' ? 'alert-success' : 
+            'bg-blue-50 border-blue-200 text-blue-800'
+          }`}>
+            <div className="flex items-start space-x-3">
+              {feedback.icon}
+              <div>
+                <p className="font-medium mb-2">
+                  체크된 항목: {checkedCount}개 / {checklistItems.length}개
+                </p>
+                <p className="text-sm">
+                  {feedback.message}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {checkedCount > 0 && (
+          <div className="text-center">
+            <button 
+              onClick={handleSubmit}
+              className="btn-primary text-lg px-8 py-4"
+            >
+              결과 확인하기
+            </button>
+          </div>
+        )}
+
+        <div className="mt-8 p-4 bg-muted/50 rounded-lg">
+          <p className="text-sm text-muted-foreground text-center">
+            ⚠️ 이 체크리스트는 의학적 진단을 대체할 수 없습니다. 
+            정확한 진단을 위해서는 반드시 전문의와 상담하세요.
+          </p>
+        </div>
+      </CardWrapper>
+    </div>
+  );
+};
+
+export default AdhdChecklist;
