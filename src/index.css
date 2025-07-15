@@ -6,26 +6,26 @@
 
 @layer base {
   :root {
-    /* 기본 배경과 텍스트 - 더 높은 대비 */
-    --background: 248 250 252;
-    --foreground: 15 23 42;
+    /* 사용자 지정 색상 팔레트 기반 */
+    --background: 53 100% 93%; /* #FFFBDE */
+    --foreground: 206 43% 46%; /* #4682A9 */
 
     /* 카드 디자인 */
-    --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --card: 0 0% 100%; /* 순수 흰색 */
+    --card-foreground: 206 43% 46%; /* #4682A9 */
 
     /* 팝오버 */
-    --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
+    --popover: 0 0% 100%;
+    --popover-foreground: 206 43% 46%;
 
-    /* 메인 브랜드 색상 - 더 진한 색상으로 가독성 향상 */
-    --primary: 14 165 233;
-    --primary-foreground: 255 255 255;
-    --primary-hover: 2 132 199;
+    /* 메인 브랜드 색상 */
+    --primary: 206 43% 46%; /* #4682A9 */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 213 44% 61%; /* #749BC2 */
 
     /* 보조 색상 */
-    --secondary: 241 245 249;
-    --secondary-foreground: 51 65 85;
+    --secondary: 203 59% 73%; /* #91C8E4 */
+    --secondary-foreground: 206 43% 46%;
 
     /* 음소거 색상 */
     --muted: 248 250 252;
