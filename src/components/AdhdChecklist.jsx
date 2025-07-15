@@ -108,8 +108,8 @@ const AdhdChecklist = ({ onComplete }) => {
           </div>
         )}
 
-        <div className="mt-8 p-4 bg-muted/50 rounded-lg">
-          <p className="text-sm text-muted-foreground text-center">
+        <div className="mt-8 p-4 bg-muted/50 rounded-lg text-center">
+          <p className="text-sm text-muted-foreground">
             ⚠️ 이 체크리스트는 의학적 진단을 대체할 수 없습니다. 
             정확한 진단을 위해서는 반드시 전문의와 상담하세요.
           </p>

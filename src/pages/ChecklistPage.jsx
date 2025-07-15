@@ -58,8 +58,8 @@ const ChecklistPage = () => {
       {/* 추가 링크 섹션 */}
       {submitted && (
         <div className="max-w-4xl mx-auto px-4 py-8">
-          <div className="bg-gradient-to-r from-accent/10 to-primary/5 p-6 rounded-xl border border-primary/10">
-            <h3 className="text-lg font-semibold text-center mb-4">
+          <div className="bg-gradient-to-r from-accent/10 to-primary/5 p-6 rounded-xl border border-primary/10 text-center">
+            <h3 className="text-lg font-semibold mb-4">
               🔍 더 자세히 알아보기
             </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

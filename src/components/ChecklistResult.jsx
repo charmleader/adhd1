@@ -9,23 +9,19 @@ const ChecklistResult = ({ name = "익명 보호자", score, answers }) => {
   const submitToSheet = async () => {
     setIsSubmitting(true);
     try {
-      // Google Apps Script URL을 실제 URL로 교체해야 합니다
-      // const response = await fetch("https://script.google.com/macros/s/AKfycbzQfRwsO7T-Uh4sldWzY6Lk8-mrWqI3SAhAXYa40kM/exec", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ 
-      //     name, 
-      //     score, 
-      //     answers,
-      //     timestamp: new Date().toISOString() 
-      //   })
-      // });
-      
-      // 임시로 시뮬레이션
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyESU-0GFYu_CghZY01j_tYXz5IE9ND72-4jA5ABCmWez7M9KaC-GvIHyipMd1i85vP/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          name, 
+          score, 
+          answers,
+          timestamp: new Date().toISOString() 
+        })
+      });
       
       setSubmitted(true);
-      // const result = await response.json();
+      const result = await response.json();
       console.log("결과 제출 완료:", { name, score, answers });
     } catch (error) {
       console.error("제출 중 오류:", error);
@@ -110,7 +106,7 @@ ${analysis.recommendation}
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="space-y-4">
-            <div className="bg-muted/30 p-4 rounded-lg">
+            <div className="bg-muted/30 p-4 rounded-lg text-center">
               <h3 className="font-semibold text-lg mb-2">기본 정보</h3>
               <p><span className="font-medium">이름:</span> {name}</p>
               <p><span className="font-medium">체크 항목:</span> {score}개 / 8개</p>
@@ -118,7 +114,7 @@ ${analysis.recommendation}
             </div>
 
             <div className="bg-muted/30 p-4 rounded-lg">
-              <h3 className="font-semibold text-lg mb-2">선택된 항목</h3>
+              <h3 className="font-semibold text-lg mb-2 text-center">선택된 항목</h3>
               <ul className="text-sm space-y-1">
                 {answers.map((answer, index) => (
                   <li key={index} className="flex items-start space-x-2">
@@ -171,8 +167,8 @@ ${analysis.recommendation}
         </div>
 
         <div className="bg-muted/50 p-4 rounded-lg">
-          <div className="flex items-start space-x-3">
-            <Shield className="w-5 h-5 text-primary mt-0.5" />
+          <div className="flex flex-col items-center text-center space-y-3">
+            <Shield className="w-5 h-5 text-primary" />
             <div className="text-sm text-muted-foreground">
               <p className="font-medium mb-1">개인정보 보호 안내</p>
               <p>
