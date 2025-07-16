@@ -72,10 +72,10 @@ const QuietSymptomCards = () => {
     <div className="max-w-4xl mx-auto p-4">
       <CardWrapper>
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 text-center">
             🔍 조용한 ADHD 주요 증상
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-center">
             아이에게서 이런 모습을 관찰할 수 있습니다
           </p>
         </div>
@@ -104,10 +104,10 @@ const QuietSymptomCards = () => {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
                     {symptom.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">
+                  <h3 className="text-xl font-bold text-foreground mb-3 text-center">
                     {symptom.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-center">
                     {symptom.description}
                   </p>
                 </div>
@@ -116,11 +116,11 @@ const QuietSymptomCards = () => {
                   <h4 className="font-semibold text-foreground mb-3 text-center">
                     💡 이런 모습을 보여요
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 text-center">
                     {symptom.examples.map((example, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
+                      <li key={idx} className="flex flex-col items-center space-x-2">
                         <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-sm text-muted-foreground">{example}</span>
+                        <span className="text-sm text-muted-foreground text-center">{example}</span>
                       </li>
                     ))}
                   </ul>
@@ -131,11 +131,11 @@ const QuietSymptomCards = () => {
         </Swiper>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground mb-4">
+          <p className="text-sm text-muted-foreground mb-4 text-center">
             좌우로 스와이프하거나 화살표를 클릭해서 다른 증상들도 확인해보세요
           </p>
           <div className="bg-warning/10 border border-warning/20 p-4 rounded-lg inline-block">
-            <p className="text-sm text-warning font-medium">
+            <p className="text-sm text-warning font-medium text-center">
               ⚠️ 이러한 증상들이 6개월 이상 지속되고 일상생활에 지장을 준다면 전문가 상담을 받아보세요
             </p>
           </div>

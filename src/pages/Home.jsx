@@ -69,11 +69,11 @@ const Home = () => {
       <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              🧠 ADHD 보호자 Q&A 앱
+            <h1 className="font-bold text-primary mb-4" style={{ fontSize: "4rem" }}>
+              우리 아이가 ADHD 라고?
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-6">
-              자녀의 ADHD에 대해 궁금한 점을 질문하고, 체크하고, 배우세요
+               ADHD에 대해 함께 알아봅시다.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {features.map((feature, index) => (
@@ -84,6 +84,12 @@ const Home = () => {
               ))}
             </div>
           </div>
+        </div>
+        {/* Hero Section과 메뉴 사이에 중앙 정렬된 자가진단 체크리스트 */}
+        <div className="w-full flex justify-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8 mt-2 text-center w-full max-w-4xl">
+            자가진단 체크리스트
+          </h2>
         </div>
       </div>
 
@@ -105,49 +111,45 @@ const Home = () => {
                   rel="noopener noreferrer" 
                   className="group w-full"
                 >
-                  <div className={`p-6 rounded-xl border hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 ${item.color}`}>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0">
+                  <div className={`p-6 rounded-xl border hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 ${item.color} flex flex-col items-center text-center`}>
+                    <div className="flex flex-col items-center mb-2">
+                      <div className="flex-shrink-0 mb-2">
                         {React.cloneElement(item.icon, { 
                           className: `w-8 h-8 ${item.color.split(' ')[0]}` 
                         })}
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-foreground mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                          {item.description}
-                        </p>
-                        <div className="flex items-center text-sm font-medium text-primary group-hover:text-primary-hover">
-                          시작하기
-                          <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
+                      <h3 className="text-lg font-bold text-foreground mb-2 text-center">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3 text-center">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center text-sm font-medium text-primary group-hover:text-primary-hover">
+                      시작하기
+                      <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
               ) : (
                 <Link key={index} to={item.to} className="group w-full">
-                  <div className={`p-6 rounded-xl border hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 ${item.color}`}>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0">
+                  <div className={`p-6 rounded-xl border hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 ${item.color} flex flex-col items-center text-center`}>
+                    <div className="flex flex-col items-center mb-2">
+                      <div className="flex-shrink-0 mb-2">
                         {React.cloneElement(item.icon, { 
                           className: `w-8 h-8 ${item.color.split(' ')[0]}` 
                         })}
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-foreground mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                          {item.description}
-                        </p>
-                        <div className="flex items-center text-sm font-medium text-primary group-hover:text-primary-hover">
-                          시작하기
-                          <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
+                      <h3 className="text-lg font-bold text-foreground mb-2 text-center">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3 text-center">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center text-sm font-medium text-primary group-hover:text-primary-hover">
+                      시작하기
+                      <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </Link>
