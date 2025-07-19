@@ -67,10 +67,10 @@ const Home = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="mb-8">
+        <div className="max-w-3xl mx-auto px-3 text-center">
+          <div className="mb-4">
             <h1
-              className="font-bold text-primary mb-4 text-2xl md:text-4xl"
+              className="font-bold text-primary mb-5 text-base md:text-3xl"
             >
               우리 아이가 ADHD 라고?
             </h1>
