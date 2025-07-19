@@ -69,7 +69,9 @@ const Home = () => {
       <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="mb-8">
-            <h1 className="font-bold text-primary mb-2" style={{ fontSize: "2rem" }}>
+            <h1
+              className="font-bold text-primary mb-4 text-2xl md:text-4xl"
+            >
               우리 아이가 ADHD 라고?
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-6">
